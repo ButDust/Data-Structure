@@ -90,7 +90,7 @@ void SimpleBubbleSort(SqList* L)
 }
 ```
 
-## Improved Bubble Sort
+## Improved Bubble Sort    
 ```cpp
 void ImprovedBubbleSort(SqList* L)
 {
@@ -99,17 +99,51 @@ void ImprovedBubbleSort(SqList* L)
     int flag = 0;
     for(i = 1; i < L->length; i ++){
         flag = 0;
-        for(j = 1; j <= L->length - i; j ++){
-            if(L->r[j].key > L->r[j+1].key){
-            temp = L->r[j];
-            L->r[j] = L->r[j+1];
-            L->r[j+1] = temp;
-            flag = 1;
+            for(j = 1; j <= L->length - i; j ++){
+                if(L->r[j].key > L->r[j+1].key){
+                temp = L->r[j];
+                L->r[j] = L->r[j+1];
+                L->r[j+1] = temp;
+                flag = 1;
+                }
             }
-        }
-        if(flag == 0){
+        if(flag == 0) {
         break;
         }
     }
+}
+```
+
+## QuickSort
+```cpp
+int Partion(SqList* L,int low,int high)
+{
+    L->r[0] = L->r[low];
+    while(low < high)
+    {
+        while(low < high && L->r[high].key >= L->r[0].key){
+        high --;
+        }
+        L->r[low] = L->r[0];
+        while(low < high && L->r[low].key <= L->r[0].key){
+        low ++;
+        }
+        L->r[high] = L->r[low];
+    }
+    L->r[low] = L->r[0];
+    return low;
+}
+void QSort(SqList* L, int low, int high)
+{
+    int pivotpos;
+    if(low < high){
+        pivotpos = Partition(L, low, high);
+        QSort(L, low, pivotpos - 1);
+        QSort(L, pivotpos + 1, high);
+    }
+}
+void QuickSort(SqList* L)
+{
+    QSort(L, 1, L->length);
 }
 ```
