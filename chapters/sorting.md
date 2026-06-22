@@ -45,3 +45,71 @@ void BinaryInsertSort(Sqlist* L)
     L->r[high+1] = L->r[0];         //The insertion position is always at r[high+1]
 }
 ```
+
+## Shell Sort
+```cpp
+void ShellSort(SqList* L, int *h, int number_of_h)
+{
+    int i, j, k, m, n, increment;
+    for(i = 1; i <= number_of_h; i ++){    // Shell Sort requires number_of_h passes of sorting
+        increment = h[i];                  // Each sorting pass uses increment as the gap to perform a straight insertion sort on the sub-arrays formed by records that are congruent modulo increment
+        
+        for(j = 1; j <= increment; j ++){  // Essentially, it is the value of the record's index modulo increment, resulting in a total of increment subsequences
+            m = j + increment;             // We consider r[j] as the initial sorted region for the current subsequence
+            
+            while(m <= L->length){
+                L->r[0] = L->r[m];         
+                n = m - increment;
+                while(n > 0 && L->r[n].key > L->r[0].key){
+                    L->r[n + increment] = L->r[n];
+                    n -= increment;
+                }
+                L->r[n + increment] = L->r[0];
+                m += increment;   
+            }
+        }
+    }
+}
+```
+
+## Simple Bubble Sort
+```cpp
+void SimpleBubbleSort(SqList* L)
+{
+    int i,j;
+    RecType temp;
+    for(i = 1; i < L->length; i ++){        
+        for(j = 1; j <= L->length - i; j ++){
+            if(L->r[j].key > L->r[j+1].key){
+            temp = L->r[j];
+            L->r[j] = L->r[j+1];
+            L->r[j+1] = temp;
+            }
+        }
+    }
+}
+```
+
+## Improved Bubble Sort
+```cpp
+void ImprovedBubbleSort(SqList* L)
+{
+    int i,j;
+    RecType temp;
+    int flag = 0;
+    for(i = 1; i < L->length; i ++){
+        flag = 0;
+        for(j = 1; j <= L->length - i; j ++){
+            if(L->r[j].key > L->r[j+1].key){
+            temp = L->r[j];
+            L->r[j] = L->r[j+1];
+            L->r[j+1] = temp;
+            flag = 1;
+            }
+        }
+        if(flag == 0){
+        break;
+        }
+    }
+}
+```
