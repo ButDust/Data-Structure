@@ -16,17 +16,3 @@ void DFS(ALGraph G,int v,bool visited[],status(*visit)(ALGraph, int)){
 }
 void DFSTraverse(ALGraph G,status
 ```
-
-## Example
-Input:
-
-```text
-[Input]
-```
-
-Output:
-
-```text
-[Output]
-```
-

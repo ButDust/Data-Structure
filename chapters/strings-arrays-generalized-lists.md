@@ -28,19 +28,6 @@ Use this page for your English notes. Replace every placeholder with your own co
 // Paste your implementation here.
 ```
 
-## Example
-Input:
-
-```text
-[Input]
-```
-
-Output:
-
-```text
-[Output]
-```
-
 ## Common Mistakes
 - [Mistake]: [Correction.]
 

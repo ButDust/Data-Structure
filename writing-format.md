@@ -36,19 +36,6 @@ title: [Chapter Title]
 // Paste your implementation here.
 ```
 
-## Example
-Input:
-
-```text
-[Input]
-```
-
-Output:
-
-```text
-[Output]
-```
-
 ## Common Mistakes
 - [Mistake]: [Correction.]
 
