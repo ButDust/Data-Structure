@@ -4,28 +4,23 @@ title: Sorting
 ---
 
 # Sorting
-
-Use this page for your English notes. Replace every placeholder with your own content.
-
-## Overview
-[Write the scope and goals of this chapter.]
-
-## Concepts
-- [Concept]: [Short explanation.]
-
-## Operations
-| Operation | Description | Time Complexity | Space Complexity |
-| --- | --- | --- | --- |
-| [Operation] | [Description] | [O(...)] | [O(...)] |
-
-## Algorithm Steps
-1. [Step]
-2. [Step]
-3. [Step]
-
-## Code
+## Straight Insertion Sort
 ```cpp
-// Paste your implementation here.
+void InsertSort(SqList* L)
+{   
+    int i,j;       
+    i = 2;                  //Consider the first element (r[1]) as already sorted, initializing the sorted region to contain only a single element
+    while(i <= L->length){
+    L->r[0] = L->r[i];      //Store the first record of the unsorted subfile into the sentinel $r[0]$
+    j = i - 1;              //Traverse the elements from index i-1 down to 1 in a backward direction
+    if(L->r[j].key > L->r[0].key){
+    L->r[j+1] = L->r[j];    //Shift the current record $r[j]$ backward by one position
+    j --;                   //update the value of j
+    }
+    L->r[j+1] = L->r[0];    //assign the value of the sentinel $r[0]$ to $r[j+1]$
+    i ++;
+  }
+}
 ```
 
 ## Common Mistakes
