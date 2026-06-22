@@ -22,12 +22,26 @@ void InsertSort(SqList* L)
   }
 }
 ```
-
-## Common Mistakes
-- [Mistake]: [Correction.]
-
-## Review Questions
-1. [Question]
-
-## Summary
-- [Key point]
+## Binary Insertion Sort
+```cpp
+void BinaryInsertSort(Sqlist* L)
+{
+    int i,j,low,high,mid;
+    i = 2;
+    while(i <= L->length){
+    L->r[0] = L->r[i];
+    low = 1 , high = i - 1;         //Searching for the last record that is not greater than r[0].
+    while(low <= high){
+    mid = (low + high) / 2;
+    if(L->r[0].key < L->r[mid].key){    
+    high = mid - 1;
+    } else {
+    low = mid + 1;
+    } 
+  }
+    for(j = i - 1; j > high; j --){
+    L->r[j+1] = L->r[j];            //Shift all records after r[high] backward by one position
+    }
+    L->r[high+1] = L->r[0];         //The insertion position is always at r[high+1]
+}
+```
